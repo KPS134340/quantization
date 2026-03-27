@@ -11,7 +11,7 @@ def load_ethics_dataset(split='test', num_samples=None):
     data = []
     
     for cat in categories:
-        ds = load_dataset('hendrycks/ethics', cat, split=split)
+        ds = load_dataset('hendrycks/ethics', cat, split=split, trust_remote_code=True)
         if num_samples is not None:
             # Safely sample
             n = min(len(ds), num_samples // len(categories))
@@ -35,7 +35,7 @@ def load_morebench(split='train', num_samples=None):
     print("Loading MoreBench...")
     # MoreBench might not have standard test splits, using train for loading
     try:
-        ds = load_dataset("morebench/morebench", split=split)
+        ds = load_dataset("morebench/morebench", split=split, trust_remote_code=True)
         if num_samples is not None:
             n = min(len(ds), num_samples)
             ds = ds.select(range(n))
@@ -61,7 +61,7 @@ def load_moral_stories(split='train', num_samples=None):
     """Loads Moral Stories dataset."""
     print("Loading Moral Stories...")
     try:
-        ds = load_dataset("demelin/moral_stories", split=split)
+        ds = load_dataset("demelin/moral_stories", split=split, trust_remote_code=True)
         if num_samples is not None:
             n = min(len(ds), num_samples)
             ds = ds.select(range(n))
@@ -90,7 +90,7 @@ def load_valuebench(split='train', num_samples=None):
     """Loads Value4AI/ValueBench dataset."""
     print("Loading ValueBench...")
     try:
-        ds = load_dataset("Value4AI/ValueBench", split=split)
+        ds = load_dataset("Value4AI/ValueBench", split=split, trust_remote_code=True)
         if num_samples is not None:
             n = min(len(ds), num_samples)
             ds = ds.select(range(n))
