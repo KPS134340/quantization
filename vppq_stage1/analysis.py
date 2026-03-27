@@ -5,7 +5,7 @@ import numpy as np
 import os
 
 def analyze_phase1(filepath: str, output_dir: str = "plots"):
-    \"\"\"Generates Divergence Heatmap for Phase 1.\"\"\"
+    """Generates Divergence Heatmap for Phase 1."""
     if not os.path.exists(filepath): return
     os.makedirs(output_dir, exist_ok=True)
     
@@ -27,9 +27,9 @@ def analyze_phase1(filepath: str, output_dir: str = "plots"):
     print("Saved Phase 1 Heatmap.")
 
 def analyze_phase2(filepath: str, output_dir: str = "plots"):
-    \"\"\"
+    """
     Generates mechanstic taxonomy and chain-length figures for Phase 2.
-    \"\"\"
+    """
     if not os.path.exists(filepath): return
     os.makedirs(output_dir, exist_ok=True)
     
@@ -66,6 +66,6 @@ def analyze_phase2(filepath: str, output_dir: str = "plots"):
     plt.close()
     print("Saved Phase 2 Chain Length Fingerprint.")
 
-if __name__ == "__main__':
+if __name__ == "__main__":
     # Add dummy test data runner
     pass

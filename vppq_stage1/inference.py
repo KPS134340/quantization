@@ -5,10 +5,10 @@ import os
 
 class InferenceEngine:
     def __init__(self, model_id: str, precision: str = "fp16", device: str = "cuda" if torch.cuda.is_available() else "cpu"):
-        \"\"\"
+        """
         Initialize the model and tokenizer.
         precision can be 'fp16', 'int8', or 'int4'.
-        \"\"\"
+        """
         self.model_id = model_id
         self.precision = precision
         self.device = device
@@ -49,9 +49,9 @@ class InferenceEngine:
         print(f"Model loaded successfully.")
         
     def generate(self, prompt: str, max_new_tokens: int = 150) -> str:
-        \"\"\"
+        """
         Generates text using Greedy Decoding (temperature=0.0).
-        \"\"\"
+        """
         inputs = self.tokenizer(prompt, return_tensors="pt").to(self.model.device)
         
         with torch.no_grad():

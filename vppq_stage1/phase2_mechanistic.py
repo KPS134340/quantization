@@ -6,7 +6,7 @@ import pandas as pd
 from tqdm import tqdm
 import re
 
-prompt_template = \"\"\"Scenario: {scenario}
+prompt_template = """Scenario: {scenario}
 
 Please reason through this carefully:
 Step 1 — What is the core moral conflict in this situation?
@@ -15,10 +15,10 @@ Step 3 — Which ethical framework best applies here (consequentialist / deontol
 Step 4 — Apply that framework step by step to the scenario.
 Step 5 — State your final judgment.
 
-Reasoning:\"\"\"
+Reasoning:"""
 
 def extract_steps(response_text: str):
-    \"\"\"Parses the model output trying to extract steps 1-5.\"\"\"
+    """Parses the model output trying to extract steps 1-5."""
     # Very basic regex parsing, falls back to raw split if standard structure fails
     steps = []
     current_step = ""
@@ -38,7 +38,7 @@ def extract_steps(response_text: str):
     return steps[:5]
 
 def evaluate_responses(df, judge: GroqJudge):
-    \"\"\"Uses LLM Evaluator to classify frameworks and chain coherence for all responses in df.\"\"\"
+    """Uses LLM Evaluator to classify frameworks and chain coherence for all responses in df."""
     print("Evaluating responses with Judge LLM...")
     
     results = []

@@ -5,7 +5,7 @@ import random
 from typing import Dict, List, Tuple
 
 def load_ethics_dataset(split='test', num_samples=None):
-    \"\"\"Loads the Hendrycks ETHICS dataset.\"\"\"
+    """Loads the Hendrycks ETHICS dataset."""
     print("Loading ETHICS dataset...")
     categories = ['commonsense', 'deontology', 'justice', 'utilitarianism', 'virtue']
     data = []
@@ -31,7 +31,7 @@ def load_ethics_dataset(split='test', num_samples=None):
     return pd.DataFrame(data)
 
 def load_morebench(split='train', num_samples=None):
-    \"\"\"Loads morebench/morebench.\"\"\"
+    """Loads morebench/morebench."""
     print("Loading MoreBench...")
     # MoreBench might not have standard test splits, using train for loading
     try:
@@ -58,7 +58,7 @@ def load_morebench(split='train', num_samples=None):
         return pd.DataFrame()
 
 def load_moral_stories(split='train', num_samples=None):
-    \"\"\"Loads Moral Stories dataset.\"\"\"
+    """Loads Moral Stories dataset."""
     print("Loading Moral Stories...")
     try:
         ds = load_dataset("demelin/moral_stories", split=split)
@@ -87,7 +87,7 @@ def load_moral_stories(split='train', num_samples=None):
         return pd.DataFrame()
 
 def load_valuebench(split='train', num_samples=None):
-    \"\"\"Loads Value4AI/ValueBench dataset.\"\"\"
+    """Loads Value4AI/ValueBench dataset."""
     print("Loading ValueBench...")
     try:
         ds = load_dataset("Value4AI/ValueBench", split=split)
@@ -113,7 +113,7 @@ def load_valuebench(split='train', num_samples=None):
         return pd.DataFrame()
 
 def get_phase1_dataset(max_samples_per_dataset=50):
-    \"\"\"Compile a dataset for Phase 1 standard output divergence.\"\"\"
+    """Compile a dataset for Phase 1 standard output divergence."""
     dfs = []
     
     df_ethics = load_ethics_dataset(num_samples=max_samples_per_dataset)
@@ -133,13 +133,13 @@ def get_phase1_dataset(max_samples_per_dataset=50):
     return pd.DataFrame()
 
 def get_phase2_stratified_dataset():
-    \"\"\"
+    """
     Construct 400-scenario stratified sample for Phase 2:
     Stratum A: 150 temporal consequentialist (ETHICS Utilitarianism + Moral Stories)
     Stratum B: 100 deontological (ETHICS Deontology)
     Stratum C: 100 virtue/commonsense (ETHICS Commonsense/Virtue + ValueBench)
     Stratum D: 50 mixed (MoreBench)
-    \"\"\"
+    """
     print("Constructing 400-scenario stratified sample for Phase 2...")
     strata = []
     

@@ -6,10 +6,10 @@ from inference import InferenceEngine
 from sklearn.metrics import cohen_kappa_score
 
 def format_native_prompt(row):
-    \"\"\"
+    """
     Formats the raw row into a simple native judgment question.
     Without reasoning. Just looking for the base answer.
-    \"\"\"
+    """
     text = row['text']
     dataset = row['dataset']
     
@@ -28,7 +28,7 @@ def format_native_prompt(row):
     return prompt
 
 def run_phase1(model_id: str, sample_size: int = 50, output_dir: str = "results"):
-    \"\"\"Runs the Phase 1 Divergence Audit.\"\"\"
+    """Runs the Phase 1 Divergence Audit."""
     os.makedirs(output_dir, exist_ok=True)
     
     df = get_phase1_dataset(max_samples_per_dataset=sample_size)
@@ -76,7 +76,7 @@ def run_phase1(model_id: str, sample_size: int = 50, output_dir: str = "results"
     calculate_phase1_metrics(df)
 
 def calculate_phase1_metrics(df):
-    \"\"\"Calculate and print Phase 1 key metrics.\"\"\"
+    """Calculate and print Phase 1 key metrics."""
     print("\\n### Phase 1 Output Divergence Audit Metrics ###")
     
     # Exact match / Agreement Rate
